@@ -49,6 +49,7 @@ regd_users.post("/register", (req, res) => {
     return res.status(401).json({ message: "Invalid credentials" });
   }
   });
+
 //Task 7
 //only registered users can login
 regd_users.post("/login", (req,res) => {

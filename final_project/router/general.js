@@ -5,7 +5,8 @@ let users = require("./auth_users.js").users;
 const public_users = express.Router();
 //const axios = require("axios").default;
 
-
+//Task 6
+//registering user
 public_users.post("/register", (req,res) => {
   const username = req.body.username;
   const password = req.body.password;
@@ -86,7 +87,7 @@ public_users.get('/review/:isbn',function (req, res) {
 });
 
 //Task 10
-// Get book review using promise
+// Get books using promise
 public_users.get('/books',function (req, res) {
 
   const get_books = new Promise((resolve, reject) => {
@@ -98,6 +99,7 @@ public_users.get('/books',function (req, res) {
 });
   
 //Task 11
+//Get books based on isbn using promise
 public_users.get('/books/isbn/:isbn',function (req, res) {
   const get_books_isbn = new Promise((resolve, reject) => {
   const isbn = req.params.isbn;
@@ -118,6 +120,7 @@ public_users.get('/books/isbn/:isbn',function (req, res) {
 });
 
 //Task 12
+//Get book details based on Author using promise
 public_users.get('/books/author/:author',function (req, res) {    
   const get_author = new Promise((resolve, reject) => {    
     let booksbyauthor = [];        
@@ -132,15 +135,17 @@ public_users.get('/books/author/:author',function (req, res) {
     });         
     res.send(JSON.stringify({booksbyauthor}, null, 4));               
   });               
-  //resolve("promise 12 resolved")   
+  
   get_author.then(function(){
-    console.log("Promise for Task 11 is resolved");
+    console.log("Promise for Task 12 is resolved");
 }).
 catch(function () { 
         console.log('Author not found');
 });            
 });  
+
 //Task 13
+//Get book details based on title using promise
 public_users.get('/books/title/:title',function (req, res) {    
   const get_title = new Promise((resolve, reject) => {    
     let booksbytitle = [];        
@@ -155,7 +160,7 @@ public_users.get('/books/title/:title',function (req, res) {
     });         
     res.send(JSON.stringify({booksbytitle}, null, 4));               
   });               
-  //resolve("promise 12 resolved")   
+  
   get_title.then(function(){
     console.log("Promise for Task 13 is resolved");
 }).
